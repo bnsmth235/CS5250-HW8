@@ -12,6 +12,23 @@ def validate_request(widget_request):
 
 def lambda_handler(event, context):
     try:
-        
+        body = json.loads(event['body'])
+        if validate_request(body):
+            sqs.send_message(
+                QueueUrl=QUEUE_URL,
+                MessageBody=json.dumps(body)
+            )
+            return {
+                'statusCode': 200,
+                'body': json.dumps({'message': 'Widget request submitted successfully'})
+            }
+        else:
+            return {
+                'statusCode': 400,
+                'body': json.dumps({'message': 'Invalid widget request'})
+            }
     except Exception as e:
-        
+        return {
+            'statusCode': 500,
+            'body': json.dumps({'message': 'Internal server error', 'error': str(e)})
+        }
