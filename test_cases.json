@@ -1,0 +1,20 @@
+
+{
+    "test" : {
+        "body": "{\"widget_id\": \"123\", \"description\": \"Test widget\"}"
+    },
+    "test2" : {
+        "body": "{\"widget_id\": \"456\", \"description\": \"Another widget\"}"
+    },
+    "test3" : {
+        "body": "{\"widget_id\": \"789\", \"description\": \"Yet another widget\"}"
+    },
+    "test4-fail" : {
+        "body": "{\"widget_id\": \"012\"}"
+    },
+    "test5-fail" : {
+        "body": "{\"description\": \"\"}"
+    }
+}
+
+  
